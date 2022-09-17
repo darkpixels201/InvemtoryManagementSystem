@@ -8,34 +8,36 @@ import Message from '../components/Message';
 
 
 function Login(location) {
-    // const history = useHistory();
-    const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  //   // const history = useHistory();
+  //   const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
     
-    const navigate = useNavigate()
-    const dispatch = useDispatch();
+  //   const navigate = useNavigate()
+  //   const dispatch = useDispatch();
 
-  const redirect = location.search ? location.search.split("=")[1] : "/";
+  // const redirect = location.search ? location.search.split("=")[1] : "/";
 
 
-  const userLogin = useSelector((state) => state.userLogin);
-  const { error, loading, userInfo } = userLogin;
-  console.log("User Info", userInfo);
+  // const userLogin = useSelector((state) => state.userLogin);
+  // const { error, loading, userInfo } = userLogin;
+  // console.log("User Info", userInfo);
 
-  useEffect(() => {
-    if (userInfo) {
-        navigate.push(redirect);
-    }
-  }, [navigate, userInfo, redirect]);
+  // useEffect(() => {
+  //   if (userInfo) {
+  //       navigate.push(redirect);
+  //   }
+  // }, [navigate, userInfo, redirect]);
 
-  const submitHandler = (e) => {
-    e.preventDefault();
-    dispatch(login(email, password));
-  };
+  // const submitHandler = (e) => {
+  //   e.preventDefault();
+  //   dispatch(login(email, password));
+  // };
 
   return (
     <>
-    {error && <Message variant="danger">{error}</Message>}
+
+    <h1>LOGIN</h1>
+    {/* {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
     <section id="login_area" className="ptb-100">
         <div className="container">
@@ -78,7 +80,7 @@ function Login(location) {
                 </div>
             </div>
         </div>
-    </section>
+    </section> */}
 </>
   )
 }

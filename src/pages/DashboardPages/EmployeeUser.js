@@ -31,6 +31,7 @@ import avatar6 from "../../assets/images/avatars/6.jpg";
 
 import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
+import CustomHeader from "../../components/customComponents/CustomHeader";
 
 function EmployeeUser() {
   // Sample how to write Icons in Array
@@ -126,7 +127,7 @@ function EmployeeUser() {
 
   return (
     <>
-      <CCardTitle className="fs-2 mt-2 mb-0 fw-light">Employees</CCardTitle>
+      {/* <CCardTitle className="fs-2 mt-2 mb-0 fw-light">Employees</CCardTitle>
       <hr
         style={{
           background: "grey",
@@ -134,7 +135,8 @@ function EmployeeUser() {
           borderColor: "grey",
           height: "3px",
         }}
-      />
+      /> */}
+      <CustomHeader title={"Employee"} />
       <CRow>
         <CCol xs>
           <CCard className="mb-4">

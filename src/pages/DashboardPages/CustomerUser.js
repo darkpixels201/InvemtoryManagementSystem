@@ -29,6 +29,7 @@ import avatar6 from "../../assets/images/avatars/6.jpg";
 
 import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
+import CustomHeader from "../../components/customComponents/CustomHeader";
 
 function CustomerUser() {
 
@@ -114,10 +115,11 @@ function CustomerUser() {
 
   return (
     <>
+    <CustomHeader title={"Customer"} />
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>Customers</CCardHeader>
+            {/* <CCardHeader>Customers</CCardHeader> */}
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">

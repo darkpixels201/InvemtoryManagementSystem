@@ -2,6 +2,7 @@ import React, { Suspense } from 'react'
 import { HashRouter, Route, Routes } from "react-router-dom";
 
 const Home = React.lazy(() => import('./pages/Home'))
+// const Login = React.lazy(() => import('./pages/Login'))
 const Login = React.lazy(() => import('./pages/Login'))
 const Signup = React.lazy(() => import('./pages/Signup'))
 const DefaultLayout = React.lazy(() => import('./components/Dashboard/DefaultLayout'))

@@ -1,11 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   CAvatar,
+  CButton,
   CCard,
   CCardBody,
   CCardHeader,
   CCol,
+  CModal,
+  CModalBody,
+  CModalFooter,
+  CModalHeader,
+  CModalTitle,
   CRow,
   CTable,
   CTableBody,
@@ -15,10 +21,8 @@ import {
   CTableRow,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import '../../assets/css/style.css'
-import {
-  cilPeople,
-} from "@coreui/icons";
+import "../../assets/css/style.css";
+import { cilPeople } from "@coreui/icons";
 
 import avatar1 from "../../assets/images/avatars/1.jpg";
 import avatar2 from "../../assets/images/avatars/2.jpg";
@@ -31,13 +35,20 @@ import { BsTrash, BsPlusLg } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import { FaEye } from "react-icons/fa";
 import { Button } from "react-bootstrap";
+import CustomHeader from "../../components/customComponents/CustomHeader";
+import EditModal from "../../components/customComponents/EditModal";
+import ViewModal from "../../components/customComponents/ViewModal";
+import SweetAlert from "react-bootstrap-sweetalert";
 
 function ManageProducts() {
+  // Sample how to write Icons in Array
+  // payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
+  // activity: {Icon: <TiEdit />},
 
-
-    // Sample how to write Icons in Array
-    // payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
-    // activity: {Icon: <TiEdit />},
+  const [eyeVisible, setEyeVisible] = useState(false);
+  const [warnAlert, setWarnAlert] = useState(false);
+  const [editVisible, setEditVisible] = useState(false);
+  const [content, setContent] = useState("edit");
 
   const tableExample = [
     {
@@ -53,9 +64,9 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // stock: { name: "USA" },
-      
-      payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
-      activity: {Icon: <TiEdit />},
+
+      payment: { name: "Mastercard", Icon: <BsTrash color="red" /> },
+      activity: { Icon: <TiEdit /> },
     },
     {
       id: 2,
@@ -70,28 +81,42 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // stock: { name: "Brazil", flag: cifBr },
-      
-      payment: { name: "Visa", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
       activity: "5 minutes ago",
     },
     {
       id: 3,
       avatar: { src: avatar3, status: "warning" },
-      user: { name: "Quintin Ed",  stock: 5, purchasePrice: 100,
-      salePrice: 200, status: "InActive", new: true, registered: "Jan 1, 2021" },
+      user: {
+        name: "Quintin Ed",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
       // stock: { name: "India", flag: cifIn },
-      
-      payment: { name: "Stripe", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
       activity: "1 hour ago",
     },
     {
       id: 4,
       avatar: { src: avatar4, status: "secondary" },
-      user: { name: "Enéas Kwadwo",  stock: 5, purchasePrice: 100,
-      salePrice: 200, status: "Active", new: true, registered: "Jan 1, 2021" },
+      user: {
+        name: "Enéas Kwadwo",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
       // stock: { name: "France", flag: cifFr },
-      
-      payment: { name: "PayPal", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
       activity: "Last month",
     },
     {
@@ -107,8 +132,8 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // stock: { name: "Spain", flag: cifEs },
-      
-      payment: { name: "Google Wallet", Icon:<BsTrash color="red"/>},
+
+      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
       activity: "Last week",
     },
     {
@@ -124,8 +149,8 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // email: { name: "Poland", flag: cifPl },
-      
-      payment: { name: "Amex", Icon:<BsTrash color="red" /> },
+
+      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
       activity: "Last week",
     },
     {
@@ -141,9 +166,9 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // stock: { name: "USA" },
-      
-      payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
-      activity: {Icon: <TiEdit />},
+
+      payment: { name: "Mastercard", Icon: <BsTrash color="red" /> },
+      activity: { Icon: <TiEdit /> },
     },
     {
       id: 2,
@@ -158,28 +183,42 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // stock: { name: "Brazil", flag: cifBr },
-      
-      payment: { name: "Visa", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
       activity: "5 minutes ago",
     },
     {
       id: 3,
       avatar: { src: avatar3, status: "warning" },
-      user: { name: "Quintin Ed",  stock: 5, purchasePrice: 100,
-      salePrice: 200, status: "InActive", new: true, registered: "Jan 1, 2021" },
+      user: {
+        name: "Quintin Ed",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
       // stock: { name: "India", flag: cifIn },
-      
-      payment: { name: "Stripe", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
       activity: "1 hour ago",
     },
     {
       id: 4,
       avatar: { src: avatar4, status: "secondary" },
-      user: { name: "Enéas Kwadwo",  stock: 5, purchasePrice: 100,
-      salePrice: 200, status: "Active", new: true, registered: "Jan 1, 2021" },
+      user: {
+        name: "Enéas Kwadwo",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
       // stock: { name: "France", flag: cifFr },
-      
-      payment: { name: "PayPal", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
       activity: "Last month",
     },
     {
@@ -195,8 +234,8 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // stock: { name: "Spain", flag: cifEs },
-      
-      payment: { name: "Google Wallet", Icon:<BsTrash color="red"/>},
+
+      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
       activity: "Last week",
     },
     {
@@ -212,19 +251,45 @@ function ManageProducts() {
         registered: "Jan 1, 2021",
       },
       // email: { name: "Poland", flag: cifPl },
-      
-      payment: { name: "Amex", Icon:<BsTrash color="red" /> },
+
+      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
       activity: "Last week",
     },
   ];
 
   return (
     <>
-   {/* <button type="submit" className="btn rounded" style={{backgroundColor: '#999', color: '#333', display: 'flex', justifyContent: 'flex-end'}}>Add Product</button> */}
-   <div className="d-flex flex-row-reverse " style={{height:'100px'}} >
-    <button className="text-light bg-secondary w-25 h-50 float-left rounded" > <BsPlusLg style={{marginRight: 15}} />Add Products</button>
-   </div>
-   {/* <Button variant="secondary" className="d-flex flex-row-reverse">Primary</Button> */}
+      <CustomHeader
+        data-coreui-toggle="modal"
+        data-coreui-target="#exampleModal"
+        title={"Product List"}
+        buttonName={"Add Product"}
+      />
+
+      <CModal visible={eyeVisible} onClose={() => setEyeVisible(false)}>
+        {content == "edit" ? (
+          <EditModal setEyeVisible={setEyeVisible} />
+        ) : (
+          <ViewModal setEyeVisible={setEyeVisible} />
+        )}
+      </CModal>
+
+      {/* <SweetAlert
+        // visible={eyeVisible}
+        // onClose={() => setWarnAlert(false)}
+        visible={warnAlert}
+        warning
+        showCancel
+        confirmBtnText="Yes, delete it!"
+        confirmBtnBsStyle="danger"
+        title="Are you sure?"
+        onConfirm={console.log("Deleted")}
+        onClose={() => setWarnAlert(false)}
+        focusCancelBtn
+      >
+        You will not be able to recover this imaginary file!
+      </SweetAlert> */}
+
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
@@ -232,16 +297,26 @@ function ManageProducts() {
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
-                  <CTableRow className="stick-top" >
+                  <CTableRow className="stick-top">
                     <CTableHeaderCell>#</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Image</CTableHeaderCell>
-                    <CTableHeaderCell>Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">stock</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Sale Price</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Purchase Price</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">
-                      Delete 
+                      Image
+                    </CTableHeaderCell>
+                    <CTableHeaderCell>Name</CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">
+                      stock
+                    </CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">
+                      Sale Price
+                    </CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">
+                      Purchase Price
+                    </CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">
+                      Status
+                    </CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">
+                      Delete
                     </CTableHeaderCell>
                     <CTableHeaderCell>Edit</CTableHeaderCell>
                     <CTableHeaderCell>View</CTableHeaderCell>
@@ -252,12 +327,11 @@ function ManageProducts() {
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell>
                         <div>{item.id}</div>
-                        </CTableDataCell>
+                      </CTableDataCell>
                       <CTableDataCell className="text-center">
-                        
                         <img
                           className="rounded"
-                          style={{height: 80, width: 80}}
+                          style={{ height: 80, width: 80 }}
                           size="xl"
                           src={item.avatar.src}
                         />
@@ -277,17 +351,51 @@ function ManageProducts() {
                         <div>{item.user.salePrice}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
-                       
-                        <div style={{color:item.user.status == "InActive" ? 'red': 'green'}}>{item.user.status}</div>
+                        <div
+                          style={{
+                            color:
+                              item.user.status == "InActive" ? "red" : "green",
+                          }}
+                        >
+                          {item.user.status}
+                        </div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center" >
-                      <BsTrash className="cursor-pointer"  color="red"/>
+                      <CTableDataCell className="text-center">
+                        <BsTrash
+                          className="cursor-pointer"
+                          color="red"
+                          onClick={() => {
+                            // setContent("edit");
+                            setWarnAlert(!warnAlert);
+                          }}
+                        />
                       </CTableDataCell>
+
                       <CTableDataCell>
-                        <TiEdit className="cursor-pointer" size={'20'} style={{marginLeft: 7}} />
+                        <TiEdit
+                          className="cursor-pointer"
+                          size={"20"}
+                          style={{ marginLeft: 7 }}
+                          onClick={() => {
+                            setContent("edit");
+                            setEyeVisible(!eyeVisible);
+                          }}
+                        />
                       </CTableDataCell>
+
                       <CTableDataCell>
-                        <FaEye className="cursor-pointer" size={'20'} style={{marginLeft: 10}} />
+                        {/* <CustomModal
+                          content={content}
+                        /> */}
+                        <FaEye
+                          className="cursor-pointer"
+                          size={"20"}
+                          style={{ marginLeft: 10 }}
+                          onClick={() => {
+                            setContent("View");
+                            setEyeVisible(!eyeVisible);
+                          }}
+                        />
                       </CTableDataCell>
                     </CTableRow>
                   ))}
@@ -299,7 +407,6 @@ function ManageProducts() {
       </CRow>
     </>
   );
-
 }
 
 export default ManageProducts;
