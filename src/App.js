@@ -1,5 +1,6 @@
 import React, { Suspense } from 'react'
 import { HashRouter, Route, Routes } from "react-router-dom";
+import ManageProductArray from './pages/DashboardPages/ManageProducts/Molecules/ManageProductArray';
 
 const Home = React.lazy(() => import('./pages/Home'))
 // const Login = React.lazy(() => import('./pages/Login'))
@@ -16,7 +17,7 @@ const Furniture = React.lazy(() => import('./pages/Furniture'))
 function App() {
   return (
     <HashRouter >
-     
+     {/* <ManageProductArray /> */}
         <Suspense>
       <Routes>
       {/* <Route path="/sidebarr" name="Sidebarnav" element={<Sidebarnav />} /> */}

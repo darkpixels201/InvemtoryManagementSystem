@@ -11,7 +11,7 @@ import { Image } from "react-bootstrap";
 import avatar6 from "../../assets/images/avatars/6.jpg";
 // import avatar6 from "../../assets/images/avatars/6.jpg";
 
-function ViewModal({ setEyeVisible, tableExample }) {
+function ViewModal({ setEyeVisible, item }) {
   return (
     <div>
       <CModalBody className="d-flex flex-wrap">
@@ -20,9 +20,9 @@ function ViewModal({ setEyeVisible, tableExample }) {
         </div>
 
         <div className="d-flex flex-wrap col-sm-6 align-items-left flex-column ">
-          <CModalTitle>Product Name</CModalTitle>
+          {/* <CModalTitle>item</CModalTitle> */}
           <CModalBody>nfjdlvafdnv djkfnkjdsbkjdbskb kdsbfbdsjkkdv bfkhbasdbfck asbkfasbkb  mavsfjhbsk,dskhj</CModalBody>
-          <CModalTitle>Sale Price</CModalTitle>
+          <CModalTitle>{item.user.name}</CModalTitle>
           <CModalTitle>Purchase Price</CModalTitle>
           <CModalTitle>Stock</CModalTitle>
           <CModalTitle>Status</CModalTitle>

@@ -60,7 +60,7 @@ const AddCategory = React.lazy(() => import('./pages/DashboardPages/AddCategory'
 const AddDiscount = React.lazy(() => import('./pages/DashboardPages/AddDiscount'))
 
 const AddProduct = React.lazy(() => import('./pages/DashboardPages/AddProduct'))
-const ManageProducts = React.lazy(() => import('./pages/DashboardPages/ManageProducts'))
+const ManageProducts = React.lazy(() => import('./pages/DashboardPages/ManageProducts/ManageProducts'))
 
 
 const CategoriesList = React.lazy(() => import('./pages/DashboardPages/CategoriesList'))
