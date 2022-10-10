@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   CAvatar,
@@ -32,6 +32,7 @@ import avatar6 from "../../assets/images/avatars/6.jpg";
 import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import CustomHeader from "../../components/customComponents/CustomHeader";
+import CustomSearchFilter from "../../components/customComponents/CustomSearchFilter";
 
 function EmployeeUser() {
   // Sample how to write Icons in Array
@@ -125,6 +126,17 @@ function EmployeeUser() {
     },
   ];
 
+  const [filteredList, setFilteredList] = new useState(tableExample);
+
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+    var updatedList = [...tableExample];
+    updatedList = updatedList.filter((item) => {
+      return item.user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+    setFilteredList(updatedList);
+  };
+
   return (
     <>
       {/* <CCardTitle className="fs-2 mt-2 mb-0 fw-light">Employees</CCardTitle>
@@ -139,9 +151,15 @@ function EmployeeUser() {
       <CustomHeader title={"Employee"} />
       <CRow>
         <CCol xs>
-          <CCard className="mb-4">
+          <CCard className="mb-4 shadow">
             {/* <CCardHeader>Employees</CCardHeader> */}
-           
+            <CCardHeader>
+              <CustomSearchFilter
+                placeholder={"Search Employees"}
+                onChange={filterBySearch}
+              />
+            </CCardHeader>
+
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
@@ -163,7 +181,7 @@ function EmployeeUser() {
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                  {tableExample.map((item, index) => (
+                  {filteredList.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar

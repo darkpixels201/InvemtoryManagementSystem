@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   CAvatar,
@@ -15,10 +15,8 @@ import {
   CTableRow,
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
-import '../../assets/css/style.css'
-import {
-  cilPeople,
-} from "@coreui/icons";
+import "../../assets/css/style.css";
+import { cilPeople } from "@coreui/icons";
 
 import avatar1 from "../../assets/images/avatars/1.jpg";
 import avatar2 from "../../assets/images/avatars/2.jpg";
@@ -30,13 +28,12 @@ import avatar6 from "../../assets/images/avatars/6.jpg";
 import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import CustomHeader from "../../components/customComponents/CustomHeader";
+import CustomSearchFilter from "../../components/customComponents/CustomSearchFilter";
 
 function CustomerUser() {
-
-
-    // Sample how to write Icons in Array
-    // payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
-    // activity: {Icon: <TiEdit />},
+  // Sample how to write Icons in Array
+  // payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
+  // activity: {Icon: <TiEdit />},
 
   const tableExample = [
     {
@@ -49,9 +46,9 @@ function CustomerUser() {
         registered: "Jan 1, 2021",
       },
       // email: { name: "USA" },
-      
-      payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
-      activity: {Icon: <TiEdit />},
+
+      payment: { name: "Mastercard", Icon: <BsTrash color="red" /> },
+      activity: { Icon: <TiEdit /> },
     },
     {
       avatar: { src: avatar2, status: "danger" },
@@ -63,24 +60,36 @@ function CustomerUser() {
         registered: "Jan 1, 2021",
       },
       // email: { name: "Brazil", flag: cifBr },
-      
-      payment: { name: "Visa", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
       activity: "5 minutes ago",
     },
     {
       avatar: { src: avatar3, status: "warning" },
-      user: { name: "Quintin Ed",  email: "Yiorgos Avraamu@gmail.com", status: "InActive", new: true, registered: "Jan 1, 2021" },
+      user: {
+        name: "Quintin Ed",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
       // email: { name: "India", flag: cifIn },
-      
-      payment: { name: "Stripe", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
       activity: "1 hour ago",
     },
     {
       avatar: { src: avatar4, status: "secondary" },
-      user: { name: "Enéas Kwadwo",  email: "Yiorgos Avraamu@gmail.com", status: "Active", new: true, registered: "Jan 1, 2021" },
+      user: {
+        name: "Enéas Kwadwo",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
       // email: { name: "France", flag: cifFr },
-      
-      payment: { name: "PayPal", Icon:<BsTrash color="red"/> },
+
+      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
       activity: "Last month",
     },
     {
@@ -93,8 +102,8 @@ function CustomerUser() {
         registered: "Jan 1, 2021",
       },
       // email: { name: "Spain", flag: cifEs },
-      
-      payment: { name: "Google Wallet", Icon:<BsTrash color="red"/>},
+
+      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
       activity: "Last week",
     },
     {
@@ -107,19 +116,36 @@ function CustomerUser() {
         registered: "Jan 1, 2021",
       },
       // email: { name: "Poland", flag: cifPl },
-      
-      payment: { name: "Amex", Icon:<BsTrash color="red" /> },
+
+      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
       activity: "Last week",
     },
   ];
 
+  const [filteredList, setFilteredList] = new useState(tableExample);
+
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+    var updatedList = [...tableExample];
+    updatedList = updatedList.filter((item) => {
+      return item.user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+    setFilteredList(updatedList);
+  };
+
   return (
     <>
-    <CustomHeader title={"Customer"} />
+      <CustomHeader title={"Customer"} />
       <CRow>
         <CCol xs>
-          <CCard className="mb-4">
+          <CCard className="mb-4 shadow">
             {/* <CCardHeader>Customers</CCardHeader> */}
+            <CCardHeader>
+              <CustomSearchFilter
+                placeholder={"Search Customers"}
+                onChange={filterBySearch}
+              />
+            </CCardHeader>
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
@@ -131,15 +157,17 @@ function CustomerUser() {
                     <CTableHeaderCell className="text-center">
                       Email
                     </CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
                     <CTableHeaderCell className="text-center">
-                      Delete 
+                      Status
+                    </CTableHeaderCell>
+                    <CTableHeaderCell className="text-center">
+                      Delete
                     </CTableHeaderCell>
                     <CTableHeaderCell>Edit</CTableHeaderCell>
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                  {tableExample.map((item, index) => (
+                  {filteredList.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar
@@ -164,15 +192,20 @@ function CustomerUser() {
                         <div>{item.user.email}</div>
                       </CTableDataCell>
                       <CTableDataCell className="text-center">
-                       
-                        <div style={{color:item.user.status == "InActive" ? 'red': 'green'}}>{item.user.status}</div>
+                        <div
+                          style={{
+                            color:
+                              item.user.status == "InActive" ? "red" : "green",
+                          }}
+                        >
+                          {item.user.status}
+                        </div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center" >
-                      <BsTrash className="cursor-pointer"  color="red"/>
+                      <CTableDataCell className="text-center">
+                        <BsTrash className="cursor-pointer" color="red" />
                       </CTableDataCell>
                       <CTableDataCell>
-                        
-                        <TiEdit className="cursor-pointer" size={'20'} />
+                        <TiEdit className="cursor-pointer" size={"20"} />
                       </CTableDataCell>
                     </CTableRow>
                   ))}
@@ -184,7 +217,6 @@ function CustomerUser() {
       </CRow>
     </>
   );
-
 }
 
 export default CustomerUser;

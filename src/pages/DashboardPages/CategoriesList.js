@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import {
   CAvatar,
@@ -25,6 +25,8 @@ import avatar6 from "../../assets/images/avatars/6.jpg";
 
 import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
+import CustomSearchFilter from "../../components/customComponents/CustomSearchFilter";
+import CustomHeader from "../../components/customComponents/CustomHeader";
 
 function CategoriesList() {
 
@@ -97,12 +99,31 @@ function CategoriesList() {
     },
   ];
 
+  const [filteredList, setFilteredList] = new useState(tableExample);
+
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+    var updatedList = [...tableExample];
+    updatedList = updatedList.filter((item) => {
+      return item.user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+    setFilteredList(updatedList);
+  };
+
   return (
     <>
+    <CustomHeader title={"Categories List"} />
       <CRow>
         <CCol xs>
           <CCard className="mb-4">
-            <CCardHeader>Categories List</CCardHeader>
+            {/* <CCardHeader>Categories List</CCardHeader> */}
+            <CCardHeader>
+              <CustomSearchFilter
+                placeholder={"Search Categories"}
+                onChange={filterBySearch}
+              />
+            </CCardHeader>
+
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
@@ -120,7 +141,7 @@ function CategoriesList() {
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                  {tableExample.map((item, index) => (
+                  {filteredList.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>
                       <CTableDataCell className="text-center">
                         <CAvatar

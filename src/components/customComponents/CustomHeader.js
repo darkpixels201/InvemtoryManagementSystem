@@ -3,20 +3,20 @@ import React from "react";
 import { BsPlusLg } from "react-icons/bs";
 import { Link } from "react-router-dom";
 
-function CustomHeader({ title, buttonName, linkTo }) {
+function CustomHeader(props) {
   return (
     <div>
         <div className="d-flex flex-row justify-content-between">
       <div>
-        <CCardTitle className="fs-2 mt-2 mb-0 fw-light">{title}</CCardTitle>
+        <CCardTitle className="fs-2 mt-2 mb-0 fw-light">{props.title}</CCardTitle>
       </div>
-      {buttonName ? (
+      {props.buttonName ? (
         <div className="">
-            <Link to={linkTo}>
+            <Link to={props.linkTo}>
         <button type="button" className="text-light bg-secondary rounded" style={{width: 200, height: 50 }}>
           {" "}
           <BsPlusLg style={{ marginRight: 15 }} />
-          {buttonName}
+          {props.buttonName}
         </button>
         </Link>
       </div>

@@ -39,122 +39,134 @@ import CustomHeader from "../../../components/customComponents/CustomHeader";
 import EditModal from "../../../components/customComponents/EditModal";
 import ViewModal from "../../../components/customComponents/ViewModal";
 import SweetAlert from "react-bootstrap-sweetalert";
-import ManageProductArray from './Molecules/ManageProductArray'
+import ManageProductArray from "./Molecules/ManageProductArray";
+import CustomSearchFilter from "../../../components/customComponents/CustomSearchFilter";
 
 function ManageProducts() {
   // Sample how to write Icons in Array
   // payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
   // activity: {Icon: <TiEdit />},
 
+  // console.log("Table ID", tableid)
 
+  const tableExample = [
+    {
+      id: 1,
+      avatar: { src: avatar1, status: "success" },
+      user: {
+        name: "Yiorgos Avraamu",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // stock: { name: "USA" },
 
-// console.log("Table ID", tableid)
-
-const tableExample = [
-  {
-    id: 1,
-    avatar: { src: avatar1, status: "success" },
-    user: {
-      name: "Yiorgos Avraamu",
-      stock: 5,
-      purchasePrice: 100,
-      salePrice: 200,
-      status: "Active",
-      new: true,
-      registered: "Jan 1, 2021",
+      payment: { name: "Mastercard", Icon: <BsTrash color="red" /> },
+      activity: { Icon: <TiEdit /> },
     },
-    // stock: { name: "USA" },
+    {
+      id: 2,
+      avatar: { src: avatar2, status: "danger" },
+      user: {
+        name: "Avram Tarasios Avram Tarasios",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "Active",
+        new: false,
+        registered: "Jan 1, 2021",
+      },
+      // stock: { name: "Brazil", flag: cifBr },
 
-    payment: { name: "Mastercard", Icon: <BsTrash color="red" /> },
-    activity: { Icon: <TiEdit /> },
-  },
-  {
-    id: 2,
-    avatar: { src: avatar2, status: "danger" },
-    user: {
-      name: "Avram Tarasios Avram Tarasios",
-      stock: 5,
-      purchasePrice: 100,
-      salePrice: 200,
-      status: "Active",
-      new: false,
-      registered: "Jan 1, 2021",
+      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
+      activity: "5 minutes ago",
     },
-    // stock: { name: "Brazil", flag: cifBr },
+    {
+      id: 3,
+      avatar: { src: avatar3, status: "warning" },
+      user: {
+        name: "Quintin Ed",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // stock: { name: "India", flag: cifIn },
 
-    payment: { name: "Visa", Icon: <BsTrash color="red" /> },
-    activity: "5 minutes ago",
-  },
-  {
-    id: 3,
-    avatar: { src: avatar3, status: "warning" },
-    user: {
-      name: "Quintin Ed",
-      stock: 5,
-      purchasePrice: 100,
-      salePrice: 200,
-      status: "InActive",
-      new: true,
-      registered: "Jan 1, 2021",
+      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
+      activity: "1 hour ago",
     },
-    // stock: { name: "India", flag: cifIn },
+    {
+      id: 4,
+      avatar: { src: avatar4, status: "secondary" },
+      user: {
+        name: "Enéas Kwadwo",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // stock: { name: "France", flag: cifFr },
 
-    payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
-    activity: "1 hour ago",
-  },
-  {
-    id: 4,
-    avatar: { src: avatar4, status: "secondary" },
-    user: {
-      name: "Enéas Kwadwo",
-      stock: 5,
-      purchasePrice: 100,
-      salePrice: 200,
-      status: "Active",
-      new: true,
-      registered: "Jan 1, 2021",
+      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
+      activity: "Last month",
     },
-    // stock: { name: "France", flag: cifFr },
+    {
+      id: 5,
+      avatar: { src: avatar5, status: "success" },
+      user: {
+        name: "Agapetus Tadeáš",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // stock: { name: "Spain", flag: cifEs },
 
-    payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
-    activity: "Last month",
-  },
-  {
-    id: 5,
-    avatar: { src: avatar5, status: "success" },
-    user: {
-      name: "Agapetus Tadeáš",
-      stock: 5,
-      purchasePrice: 100,
-      salePrice: 200,
-      status: "InActive",
-      new: true,
-      registered: "Jan 1, 2021",
+      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
     },
-    // stock: { name: "Spain", flag: cifEs },
+    {
+      id: 6,
+      avatar: { src: avatar6, status: "danger" },
+      user: {
+        name: "Friderik Dávid",
+        stock: 5,
+        purchasePrice: 100,
+        salePrice: 200,
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Poland", flag: cifPl },
 
-    payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
-    activity: "Last week",
-  },
-  {
-    id: 6,
-    avatar: { src: avatar6, status: "danger" },
-    user: {
-      name: "Friderik Dávid",
-      stock: 5,
-      purchasePrice: 100,
-      salePrice: 200,
-      status: "Active",
-      new: true,
-      registered: "Jan 1, 2021",
+      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
     },
-    // email: { name: "Poland", flag: cifPl },
+  ];
 
-    payment: { name: "Amex", Icon: <BsTrash color="red" /> },
-    activity: "Last week",
-  },
-  
-];
+  // const [search, setSearch] = useState("");
+  // const [filterList, setFilterList] = useState(tableExample);
+
+  const [filteredList, setFilteredList] = new useState(tableExample);
+
+  const filterBySearch = (event) => {
+    const query = event.target.value;
+    var updatedList = [...tableExample];
+    updatedList = updatedList.filter((item) => {
+      return item.user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
+    });
+    setFilteredList(updatedList);
+  };
 
   return (
     <>
@@ -164,8 +176,6 @@ const tableExample = [
         title={"Product List"}
         buttonName={"Add Product"}
       />
-
-     
 
       {/* <SweetAlert
         // visible={eyeVisible}
@@ -183,10 +193,15 @@ const tableExample = [
         You will not be able to recover this imaginary file!
       </SweetAlert> */}
 
-      <CRow>
+      <CRow className="">
         <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>Products List</CCardHeader>
+          <CCard className="mb-4 shadow">
+            <CCardHeader>
+              <CustomSearchFilter
+                placeholder={"Search Products"}
+                onChange={filterBySearch}
+              />
+            </CCardHeader>
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
                 <CTableHead color="light">
@@ -216,9 +231,9 @@ const tableExample = [
                   </CTableRow>
                 </CTableHead>
                 <CTableBody>
-                {tableExample.map((item, index) => (
+                  {filteredList.map((item, index) => (
                     <ManageProductArray key={index} item={item} />
-                    ))}
+                  ))}
                 </CTableBody>
               </CTable>
             </CCardBody>
