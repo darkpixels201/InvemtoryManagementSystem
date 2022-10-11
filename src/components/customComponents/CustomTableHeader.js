@@ -6,8 +6,8 @@ import React from "react";
 
 const CustomTableHeader = (props) => {
   return (
-    <CTableHead color="">
-      <CTableRow className="stick-top">
+    <CTableHead style={{height: 50, backgroundColor:"#effbfd", boxShadow: "0.5px 0.5px 15px #48cae4",}} color="">
+      <CTableRow align="middle" className="stick-top">
         {props.id ? <CTableHeaderCell>{props.id}</CTableHeaderCell> : null}
 
         {props.icon ? (

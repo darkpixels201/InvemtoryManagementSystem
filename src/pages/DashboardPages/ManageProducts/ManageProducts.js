@@ -171,13 +171,6 @@ function ManageProducts() {
 
   return (
     <>
-      <CustomHeader
-        data-coreui-toggle="modal"
-        data-coreui-target="#exampleModal"
-        title={"Product List"}
-        buttonName={"Add Product"}
-      />
-
       {/* <SweetAlert
         // visible={eyeVisible}
         // onClose={() => setWarnAlert(false)}
@@ -196,16 +189,25 @@ function ManageProducts() {
 
       <CRow className="">
         <CCol xs>
-          <CCard className="mb-4 shadow"  >
-            <CCardHeader>
+          <CCard className="mb-4 shadow " style={{borderRadius:20}} >
+            {/* <div style={{padding:10}}>
               <CustomSearchFilter
                 placeholder={"Search Products"}
                 onChange={filterBySearch}
               />
-            </CCardHeader>
+            </div> */}
+
+            <CustomHeader
+              // data-coreui-toggle="modal"
+              // data-coreui-target="#exampleModal"
+              title={"Product List"}
+              buttonName={"Add Product"}
+              filterBySearch={filterBySearch}
+              search
+            />
             {/* <CCardBody> */}
-            <CCard >
-              <CTable align="middle" className="mb-0 border"  hover responsive >
+            <CCard className="border border-0 " style={{borderRadius:20}}>
+              <CTable align="middle" className="mb-0" borderless hover responsive>
                 <CustomTableHeader
                   id={"#"}
                   image={"Image"}
@@ -218,13 +220,13 @@ function ManageProducts() {
                   edit={"Edit"}
                   view="View"
                 />
-                <CTableBody>
+                <CTableBody >
                   {filteredList.map((item, index) => (
                     <ManageProductArray key={index} item={item} />
                   ))}
                 </CTableBody>
               </CTable>
-              </CCard>
+            </CCard>
             {/* </CCardBody> */}
           </CCard>
         </CCol>

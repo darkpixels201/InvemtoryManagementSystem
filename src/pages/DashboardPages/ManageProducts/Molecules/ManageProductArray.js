@@ -61,7 +61,7 @@ function ManageProductArray({ item }) {
   return (
     // <div>
     <>
-      <CTableRow v-for="item in tableItems">
+      <CTableRow v-for="item in tableItems ">
         <CTableDataCell>
           <div>{item.id}</div>
         </CTableDataCell>
