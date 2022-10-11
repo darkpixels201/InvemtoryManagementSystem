@@ -27,6 +27,7 @@ import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import CustomSearchFilter from "../../components/customComponents/CustomSearchFilter";
 import CustomHeader from "../../components/customComponents/CustomHeader";
+import CustomTableHeader from "../../components/customComponents/CustomTableHeader";
 
 function CategoriesList() {
 
@@ -126,20 +127,13 @@ function CategoriesList() {
 
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
-                <CTableHead color="light">
-                  <CTableRow>
-                    <CTableHeaderCell className="text-center">
-                      {"#"}
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>Category</CTableHeaderCell>
-                    
-                    <CTableHeaderCell className="text-center">Status</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Delete 
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>Edit</CTableHeaderCell>
-                  </CTableRow>
-                </CTableHead>
+                 <CustomTableHeader
+                  image={"#"}
+                  userName={"Category"}
+                  status={"Status"}
+                  delete={"Delete"}
+                  edit={"Edit"}
+                />
                 <CTableBody>
                   {filteredList.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>

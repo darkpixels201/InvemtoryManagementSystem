@@ -41,6 +41,7 @@ import ViewModal from "../../../components/customComponents/ViewModal";
 import SweetAlert from "react-bootstrap-sweetalert";
 import ManageProductArray from "./Molecules/ManageProductArray";
 import CustomSearchFilter from "../../../components/customComponents/CustomSearchFilter";
+import CustomTableHeader from "../../../components/customComponents/CustomTableHeader";
 
 function ManageProducts() {
   // Sample how to write Icons in Array
@@ -195,48 +196,36 @@ function ManageProducts() {
 
       <CRow className="">
         <CCol xs>
-          <CCard className="mb-4 shadow">
+          <CCard className="mb-4 shadow"  >
             <CCardHeader>
               <CustomSearchFilter
                 placeholder={"Search Products"}
                 onChange={filterBySearch}
               />
             </CCardHeader>
-            <CCardBody>
-              <CTable align="middle" className="mb-0 border" hover responsive>
-                <CTableHead color="light">
-                  <CTableRow className="stick-top">
-                    <CTableHeaderCell>#</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Image
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      stock
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Sale Price
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Purchase Price
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Status
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Delete
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>Edit</CTableHeaderCell>
-                    <CTableHeaderCell>View</CTableHeaderCell>
-                  </CTableRow>
-                </CTableHead>
+            {/* <CCardBody> */}
+            <CCard >
+              <CTable align="middle" className="mb-0 border"  hover responsive >
+                <CustomTableHeader
+                  id={"#"}
+                  image={"Image"}
+                  name={"Name"}
+                  stock={"stock"}
+                  salePrice={"Sale Price"}
+                  purchasePrice={"Purchase Price"}
+                  status={"Status"}
+                  delete={"Delete"}
+                  edit={"Edit"}
+                  view="View"
+                />
                 <CTableBody>
                   {filteredList.map((item, index) => (
                     <ManageProductArray key={index} item={item} />
                   ))}
                 </CTableBody>
               </CTable>
-            </CCardBody>
+              </CCard>
+            {/* </CCardBody> */}
           </CCard>
         </CCol>
       </CRow>

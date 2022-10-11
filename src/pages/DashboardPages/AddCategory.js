@@ -2,18 +2,19 @@ import React from 'react'
 
 function AddCategory() {
   return (
-    <section id="category_area" className="ptb-50">
+    <section id="category_area" >
       <div className="container">
       <div className="col-lg-6 offset-lg-3 col-md-12 col-sm-12 col-12">
-            <div className="account_form ">
+            <div className="account_form rounded">
                 <h3>Add Category</h3>
                 <form 
                 // onSubmit={submitHandler}
                 >
                 <div className="default-form-box">
               <input
-              style={{width: "100%"}}
+              style={{width: "100%", paddingLeft:5}}
               type="text"
+              
               placeholder="Enter Category"
               // value={email}
               // onChange={(e) => setEmail(e.target.value)}

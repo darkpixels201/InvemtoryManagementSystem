@@ -29,6 +29,7 @@ import { BsTrash } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import CustomHeader from "../../components/customComponents/CustomHeader";
 import CustomSearchFilter from "../../components/customComponents/CustomSearchFilter";
+import CustomTableHeader from "../../components/customComponents/CustomTableHeader";
 
 function CustomerUser() {
   // Sample how to write Icons in Array
@@ -148,24 +149,14 @@ function CustomerUser() {
             </CCardHeader>
             <CCardBody>
               <CTable align="middle" className="mb-0 border" hover responsive>
-                <CTableHead color="light">
-                  <CTableRow>
-                    <CTableHeaderCell className="text-center">
-                      <CIcon icon={cilPeople} />
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>User Name</CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Email
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Status
-                    </CTableHeaderCell>
-                    <CTableHeaderCell className="text-center">
-                      Delete
-                    </CTableHeaderCell>
-                    <CTableHeaderCell>Edit</CTableHeaderCell>
-                  </CTableRow>
-                </CTableHead>
+              <CustomTableHeader
+                  icon={<CIcon icon={cilPeople} />}
+                  userName={"User Name"}
+                  email={"Email"}
+                  status={"Status"}
+                  delete={"Delete"}
+                  edit={"Edit"}
+                />
                 <CTableBody>
                   {filteredList.map((item, index) => (
                     <CTableRow v-for="item in tableItems" key={index}>

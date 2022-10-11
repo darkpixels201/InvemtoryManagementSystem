@@ -68,7 +68,7 @@ function ManageProductArray({ item }) {
         <CTableDataCell className="text-center">
           <img
             className="rounded"
-            style={{ height: 80, width: 80 }}
+            style={{ height: 60, width: 60 }}
             size="xl"
             src={item.avatar.src}
           />
