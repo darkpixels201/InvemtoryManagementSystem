@@ -121,6 +121,216 @@ function CustomerUser() {
       payment: { name: "Amex", Icon: <BsTrash color="red" /> },
       activity: "Last week",
     },
+    {
+      avatar: { src: avatar2, status: "danger" },
+      user: {
+        name: "Avram Tarasios Avram Tarasios",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: false,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Brazil", flag: cifBr },
+
+      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
+      activity: "5 minutes ago",
+    },
+    {
+      avatar: { src: avatar3, status: "warning" },
+      user: {
+        name: "Quintin Ed",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "India", flag: cifIn },
+
+      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
+      activity: "1 hour ago",
+    },
+    {
+      avatar: { src: avatar4, status: "secondary" },
+      user: {
+        name: "Enéas Kwadwo",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "France", flag: cifFr },
+
+      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
+      activity: "Last month",
+    },
+    {
+      avatar: { src: avatar5, status: "success" },
+      user: {
+        name: "Agapetus Tadeáš",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Spain", flag: cifEs },
+
+      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
+    },
+    {
+      avatar: { src: avatar6, status: "danger" },
+      user: {
+        name: "Friderik Dávid",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Poland", flag: cifPl },
+
+      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
+    },
+    {
+      avatar: { src: avatar2, status: "danger" },
+      user: {
+        name: "Avram Tarasios Avram Tarasios",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: false,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Brazil", flag: cifBr },
+
+      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
+      activity: "5 minutes ago",
+    },
+    {
+      avatar: { src: avatar3, status: "warning" },
+      user: {
+        name: "Quintin Ed",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "India", flag: cifIn },
+
+      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
+      activity: "1 hour ago",
+    },
+    {
+      avatar: { src: avatar4, status: "secondary" },
+      user: {
+        name: "Enéas Kwadwo",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "France", flag: cifFr },
+
+      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
+      activity: "Last month",
+    },
+    {
+      avatar: { src: avatar5, status: "success" },
+      user: {
+        name: "Agapetus Tadeáš",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Spain", flag: cifEs },
+
+      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
+    },
+    {
+      avatar: { src: avatar6, status: "danger" },
+      user: {
+        name: "Friderik Dávid",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Poland", flag: cifPl },
+
+      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
+    },
+    {
+      avatar: { src: avatar2, status: "danger" },
+      user: {
+        name: "Avram Tarasios Avram Tarasios",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: false,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Brazil", flag: cifBr },
+
+      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
+      activity: "5 minutes ago",
+    },
+    {
+      avatar: { src: avatar3, status: "warning" },
+      user: {
+        name: "Quintin Ed",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "India", flag: cifIn },
+
+      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
+      activity: "1 hour ago",
+    },
+    {
+      avatar: { src: avatar4, status: "secondary" },
+      user: {
+        name: "Enéas Kwadwo",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "France", flag: cifFr },
+
+      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
+      activity: "Last month",
+    },
+    {
+      avatar: { src: avatar5, status: "success" },
+      user: {
+        name: "Agapetus Tadeáš",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "InActive",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Spain", flag: cifEs },
+
+      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
+    },
+    {
+      avatar: { src: avatar6, status: "danger" },
+      user: {
+        name: "Friderik Dávid",
+        email: "Yiorgos Avraamu@gmail.com",
+        status: "Active",
+        new: true,
+        registered: "Jan 1, 2021",
+      },
+      // email: { name: "Poland", flag: cifPl },
+
+      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
+      activity: "Last week",
+    },
   ];
 
   const [filteredList, setFilteredList] = new useState(tableExample);
@@ -136,19 +346,42 @@ function CustomerUser() {
 
   return (
     <>
-      <CustomHeader title={"Customer"} />
       <CRow>
-        <CCol xs>
-          <CCard className="mb-4 shadow">
-            {/* <CCardHeader>Customers</CCardHeader> */}
-            <CCardHeader>
+        <CCol xs style={{ paddingBottom:50}}>
+          <CCard className="mb-4 shadow" style={{ borderRadius: 20 }}>
+
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent:
+                  window.innerWidth <= 775 ? "center" : "space-between",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
+            <CustomHeader
+                justifyContent={"space-between"}
+                title={"Customers"}
+              />
+              <div
+                style={{
+                  marginBottom: window.innerWidth <= 775 ? 20 : "",
+                }}
+              >
               <CustomSearchFilter
+              style={{
+                marginBottom: window.innerWidth <= 775 ? 20 : "",
+              }}
                 placeholder={"Search Customers"}
                 onChange={filterBySearch}
               />
-            </CCardHeader>
-            <CCardBody>
-              <CTable align="middle" className="mb-0 border" hover responsive>
+              </div>
+              </div>
+
+            <CCard className="border border-0 " style={{ borderRadius: 20 }}>
+              <CTable align="middle" className="mb-0" borderless hover responsive>
               <CustomTableHeader
                   icon={<CIcon icon={cilPeople} />}
                   userName={"User Name"}
@@ -202,7 +435,7 @@ function CustomerUser() {
                   ))}
                 </CTableBody>
               </CTable>
-            </CCardBody>
+            </CCard>
           </CCard>
         </CCol>
       </CRow>

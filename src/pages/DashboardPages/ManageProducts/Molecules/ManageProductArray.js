@@ -42,6 +42,7 @@ import { BsTrash, BsPlusLg } from "react-icons/bs";
 import { TiEdit } from "react-icons/ti";
 import { FaEye } from "react-icons/fa";
 import CustomText from "../../../../components/customComponents/CustomText";
+import ToogleSwitch from "../../../../components/customComponents/ToogleSwitch";
 
 function ManageProductArray({ item }) {
   const [eyeVisible, setEyeVisible] = useState(false);
@@ -59,11 +60,10 @@ function ManageProductArray({ item }) {
   }
 
   return (
-    // <div>
     <>
       <CTableRow v-for="item in tableItems ">
         <CTableDataCell>
-          <div>{item.id}</div>
+          {item.id}
         </CTableDataCell>
         <CTableDataCell className="text-center">
           <img
@@ -93,7 +93,8 @@ function ManageProductArray({ item }) {
               color: item.user.status == "InActive" ? "red" : "green",
             }}
           >
-            {item.user.status}
+            {/* {item.user.status} */}
+            <ToogleSwitch />
           </div>
         </CTableDataCell>
         <CTableDataCell className="text-center">
@@ -132,7 +133,26 @@ function ManageProductArray({ item }) {
         </CTableDataCell>
       </CTableRow>
 
-      {/* <CModal
+      <CModal
+        size={content == "edit" ? "lg" : "lg"}
+        visible={eyeVisible}
+        onClose={() => setEyeVisible(false)}
+      >
+        {content == "edit" ? (
+          <EditModal setEyeVisible={setEyeVisible} item={item} />
+        ) : (
+          <ViewModal setEyeVisible={setEyeVisible} item={item} />
+        )}
+      </CModal>
+    </>
+
+  );
+}
+
+export default ManageProductArray;
+
+{
+  /* <CModal
         size="lg"
         visible={eyeVisible}
         onClose={() => setEyeVisible(false)}
@@ -177,18 +197,5 @@ function ManageProductArray({ item }) {
           </CButton>
           <CButton color="primary">Save changes</CButton>
         </CModalFooter>
-      </CModal> */}
-
-      <CModal size={content == "edit" ? ("lg") : ("md")} visible={eyeVisible} onClose={() => setEyeVisible(false)}>
-        {content == "edit" ? (
-          <EditModal setEyeVisible={setEyeVisible} item={item} />
-        ) : (
-          <ViewModal setEyeVisible={setEyeVisible} />
-        )}
-      </CModal>
-    </>
-    // </div>
-  );
+      </CModal> */
 }
-
-export default ManageProductArray;

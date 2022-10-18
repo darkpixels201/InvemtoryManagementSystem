@@ -3,9 +3,25 @@ import React from "react";
 const CustomSearchFilter = (props) => {
   return (
     <div>
-      <div className="form-floating h-5 mt-1 " style={{display:"flex",justifyContent:"center"}}>
+      <div
+        className="form-floating h-5 mt-1 "
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          width: 300,
+          alignSelf: "center",
+            // margintop: window.innerWidth <= 775 ? "100" : "100",
+        }}
+      >
         <input
-          style={{ height: 4, width: "80%", padding: 8, borderRadius:50 }}
+          style={{
+            height: 4,
+            width: window.innerWidth <= 775 ? "100%" : "80%",
+            // width: 500,
+            padding: 20,
+            borderRadius: 50,
+            
+          }}
           type="text"
           id="floatingInput"
           placeholder={props.placeholder}

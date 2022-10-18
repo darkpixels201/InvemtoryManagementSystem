@@ -115,7 +115,7 @@ function Users() {
   return (
     <>
       <CRow>
-        <CCol xs>
+        <CCol xs style={{ paddingBottom:50}}>
           <CCard className="mb-4">
             <CCardHeader>Employees</CCardHeader>
             <CCardBody>

@@ -149,20 +149,51 @@ function EmployeeUser() {
           height: "3px",
         }}
       /> */}
-      <CustomHeader title={"Employee"} />
+      {/* <CustomHeader title={"Employee"} /> */}
       <CRow>
-        <CCol xs>
-          <CCard className="mb-4 shadow">
-            {/* <CCardHeader>Employees</CCardHeader> */}
-            <CCardHeader>
-              <CustomSearchFilter
-                placeholder={"Search Employees"}
-                onChange={filterBySearch}
-              />
-            </CCardHeader>
+        <CCol xs style={{ paddingBottom: 50 }}>
+          <CCard className="mb-4 shadow" style={{ borderRadius: 20 }}>
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                justifyContent:
+                  window.innerWidth <= 775 ? "center" : "space-between",
+                alignItems: "center",
+                alignContent: "center",
+              }}
+            >
+              <>
+                <CustomHeader
+                  justifyContent={"space-between"}
+                  title={"Employee"}
+                />
+              </>
 
-            <CCardBody>
-              <CTable align="middle" className="mb-0 border" hover responsive>
+              <div
+                style={{
+                  marginBottom: window.innerWidth <= 775 ? 20 : "",
+                }}
+              >
+                <CustomSearchFilter
+                style={{
+                  marginBottom: window.innerWidth <= 775 ? 20 : "",
+                }}
+                  placeholder={"Search Employee"}
+                  onChange={filterBySearch}
+                />
+              </div>
+            </div>
+            {/* </CCardHeader> */}
+
+            <CCard className="border border-0 " style={{ borderRadius: 20 }}>
+              <CTable
+                align="middle"
+                className="mb-0"
+                borderless
+                hover
+                responsive
+              >
                 <CustomTableHeader
                   icon={<CIcon icon={cilPeople} />}
                   userName={"User Name"}
@@ -216,7 +247,7 @@ function EmployeeUser() {
                   ))}
                 </CTableBody>
               </CTable>
-            </CCardBody>
+            </CCard>
           </CCard>
         </CCol>
       </CRow>

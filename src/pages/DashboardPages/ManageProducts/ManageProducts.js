@@ -22,6 +22,7 @@ import {
 } from "@coreui/react";
 import CIcon from "@coreui/icons-react";
 import "../../../assets/css/style.css";
+import "../../../assets/css/background.css";
 import { cilPeople } from "@coreui/icons";
 
 import avatar1 from "../../../assets/images/avatars/1.jpg";
@@ -42,6 +43,9 @@ import SweetAlert from "react-bootstrap-sweetalert";
 import ManageProductArray from "./Molecules/ManageProductArray";
 import CustomSearchFilter from "../../../components/customComponents/CustomSearchFilter";
 import CustomTableHeader from "../../../components/customComponents/CustomTableHeader";
+import CustomButtonHeader from "../../../components/customComponents/CustomButtonHeader";
+import {TableExample} from "../../../assets/ProductArray/TableExample";
+
 
 function ManageProducts() {
   // Sample how to write Icons in Array
@@ -50,119 +54,17 @@ function ManageProducts() {
 
   // console.log("Table ID", tableid)
 
-  const tableExample = [
-    {
-      id: 1,
-      avatar: { src: avatar1, status: "success" },
-      user: {
-        name: "Yiorgos Avraamu",
-        stock: 5,
-        purchasePrice: 100,
-        salePrice: 200,
-        status: "Active",
-        new: true,
-        registered: "Jan 1, 2021",
-      },
-      // stock: { name: "USA" },
 
-      payment: { name: "Mastercard", Icon: <BsTrash color="red" /> },
-      activity: { Icon: <TiEdit /> },
-    },
-    {
-      id: 2,
-      avatar: { src: avatar2, status: "danger" },
-      user: {
-        name: "Avram Tarasios Avram Tarasios",
-        stock: 5,
-        purchasePrice: 100,
-        salePrice: 200,
-        status: "Active",
-        new: false,
-        registered: "Jan 1, 2021",
-      },
-      // stock: { name: "Brazil", flag: cifBr },
-
-      payment: { name: "Visa", Icon: <BsTrash color="red" /> },
-      activity: "5 minutes ago",
-    },
-    {
-      id: 3,
-      avatar: { src: avatar3, status: "warning" },
-      user: {
-        name: "Quintin Ed",
-        stock: 5,
-        purchasePrice: 100,
-        salePrice: 200,
-        status: "InActive",
-        new: true,
-        registered: "Jan 1, 2021",
-      },
-      // stock: { name: "India", flag: cifIn },
-
-      payment: { name: "Stripe", Icon: <BsTrash color="red" /> },
-      activity: "1 hour ago",
-    },
-    {
-      id: 4,
-      avatar: { src: avatar4, status: "secondary" },
-      user: {
-        name: "Enéas Kwadwo",
-        stock: 5,
-        purchasePrice: 100,
-        salePrice: 200,
-        status: "Active",
-        new: true,
-        registered: "Jan 1, 2021",
-      },
-      // stock: { name: "France", flag: cifFr },
-
-      payment: { name: "PayPal", Icon: <BsTrash color="red" /> },
-      activity: "Last month",
-    },
-    {
-      id: 5,
-      avatar: { src: avatar5, status: "success" },
-      user: {
-        name: "Agapetus Tadeáš",
-        stock: 5,
-        purchasePrice: 100,
-        salePrice: 200,
-        status: "InActive",
-        new: true,
-        registered: "Jan 1, 2021",
-      },
-      // stock: { name: "Spain", flag: cifEs },
-
-      payment: { name: "Google Wallet", Icon: <BsTrash color="red" /> },
-      activity: "Last week",
-    },
-    {
-      id: 6,
-      avatar: { src: avatar6, status: "danger" },
-      user: {
-        name: "Friderik Dávid",
-        stock: 5,
-        purchasePrice: 100,
-        salePrice: 200,
-        status: "Active",
-        new: true,
-        registered: "Jan 1, 2021",
-      },
-      // email: { name: "Poland", flag: cifPl },
-
-      payment: { name: "Amex", Icon: <BsTrash color="red" /> },
-      activity: "Last week",
-    },
-  ];
 
   // const [search, setSearch] = useState("");
   // const [filterList, setFilterList] = useState(tableExample);
 
-  const [filteredList, setFilteredList] = new useState(tableExample);
+
+  const [filteredList, setFilteredList] = new useState(TableExample);
 
   const filterBySearch = (event) => {
     const query = event.target.value;
-    var updatedList = [...tableExample];
+    var updatedList = [...TableExample];
     updatedList = updatedList.filter((item) => {
       return item.user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     });
@@ -187,27 +89,19 @@ function ManageProducts() {
         You will not be able to recover this imaginary file!
       </SweetAlert> */}
 
-      <CRow className="">
-        <CCol xs>
-          <CCard className="mb-4 shadow " style={{borderRadius:20}} >
-            {/* <div style={{padding:10}}>
-              <CustomSearchFilter
-                placeholder={"Search Products"}
-                onChange={filterBySearch}
-              />
-            </div> */}
+      <CRow className=""  >
+        <CCol xs style={{ paddingBottom:50}}>
+          <CCard className="mb-4 shadow " style={{ borderRadius: 20 }}>
+            <CustomButtonHeader filterBySearch={filterBySearch} />
 
-            <CustomHeader
-              // data-coreui-toggle="modal"
-              // data-coreui-target="#exampleModal"
-              title={"Product List"}
-              buttonName={"Add Product"}
-              filterBySearch={filterBySearch}
-              search
-            />
-            {/* <CCardBody> */}
-            <CCard className="border border-0 " style={{borderRadius:20}}>
-              <CTable align="middle" className="mb-0" borderless hover responsive>
+            <CCard className="border border-0 " style={{ borderRadius: 20 }}>
+              <CTable
+                align="middle"
+                className="mb-0"
+                borderless
+                hover
+                responsive
+              >
                 <CustomTableHeader
                   id={"#"}
                   image={"Image"}
@@ -220,14 +114,13 @@ function ManageProducts() {
                   edit={"Edit"}
                   view="View"
                 />
-                <CTableBody >
+                <CTableBody>
                   {filteredList.map((item, index) => (
                     <ManageProductArray key={index} item={item} />
                   ))}
                 </CTableBody>
               </CTable>
             </CCard>
-            {/* </CCardBody> */}
           </CCard>
         </CCol>
       </CRow>

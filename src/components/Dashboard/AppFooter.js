@@ -1,10 +1,12 @@
-import React from 'react'
-import { CFooter } from '@coreui/react'
+import React from "react";
+import { CFooter } from "@coreui/react";
 
 const AppFooter = () => {
   return (
-    <CFooter>
+    <CFooter style={{position:"fixed", bottom:0, height:60,}}>
+    {/* <CFooter style={{position:"relative", bottom:0, height:60,}}> */}
       <div>
+      <div> 
         <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">
           CoreUI
         </a>
@@ -16,8 +18,27 @@ const AppFooter = () => {
           CoreUI React Admin &amp; Dashboard Template
         </a>
       </div>
+      </div>
     </CFooter>
-  )
-}
+    // <>
+    //   <div >
+    //     <a href="https://coreui.io" target="_blank" rel="noopener noreferrer">
+    //       CoreUI
+    //     </a>
+    //     <span className="ms-1">&copy; 2022 creativeLabs.</span>
+    //   </div>
+    //   <div className="ms-auto">
+    //     <span className="me-1">Powered by</span>
+    //     <a
+    //       href="https://coreui.io/react"
+    //       target="_blank"
+    //       rel="noopener noreferrer"
+    //     >
+    //       CoreUI React Admin &amp; Dashboard Template
+    //     </a>
+    //   </div>
+    // </>
+  );
+};
 
-export default React.memo(AppFooter)
+export default React.memo(AppFooter);

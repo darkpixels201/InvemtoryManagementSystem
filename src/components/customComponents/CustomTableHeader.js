@@ -6,9 +6,20 @@ import React from "react";
 
 const CustomTableHeader = (props) => {
   return (
-    <CTableHead style={{height: 50, backgroundColor:"#effbfd", boxShadow: "0.5px 0.5px 15px #48cae4",}} color="">
+    <CTableHead
+      style={{
+        height: 50,
+        background: "linear-gradient(to right,#9cbefe, #f4f4f4)",
+        boxShadow: "0.5px 0.5px 15px #6b9efd",
+      }}
+      color=""
+    >
       <CTableRow align="middle" className="stick-top">
-        {props.id ? <CTableHeaderCell>{props.id}</CTableHeaderCell> : null}
+        {props.id ? (
+          <CTableHeaderCell className="text-center">
+            {props.id}
+          </CTableHeaderCell>
+        ) : null}
 
         {props.icon ? (
           <CTableHeaderCell className="text-center">
@@ -28,7 +39,11 @@ const CustomTableHeader = (props) => {
 
         {props.name ? <CTableHeaderCell>{props.name}</CTableHeaderCell> : null}
 
-        {props.discount ? <CTableHeaderCell className="text-center">{props.discount}</CTableHeaderCell> : null}
+        {props.discount ? (
+          <CTableHeaderCell className="text-center">
+            {props.discount}
+          </CTableHeaderCell>
+        ) : null}
 
         {props.email ? (
           <CTableHeaderCell className="text-center">

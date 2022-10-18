@@ -73,6 +73,8 @@ const PurchaseReport = React.lazy(() => import('./pages/DashboardPages/PurchaseR
 const SaleReport = React.lazy(() => import('./pages/DashboardPages/SaleReport'))
 const Stock = React.lazy(() => import('./pages/DashboardPages/Stock'))
 
+const PointOfSale = React.lazy(() => import('./pages/DashboardPages/POS/PointOfSale'))
+
 const routes = [
   { path: '/', exact: true, name: 'Home' },
   // { path: '/dashboard', name: 'Dashboard', element: Dashboard },
@@ -96,6 +98,8 @@ const routes = [
   { path: '/report/PurchaseReport', name: 'PurchaseReport', element: PurchaseReport },
   { path: '/seller/report/salereport', name: 'SaleReport', element: SaleReport },
   { path: '/Stock', name: 'Stock', element: Stock },
+  
+  { path: '/pos', name: 'pos', element: PointOfSale },
   // { path: '/theme', name: 'Theme', element: Colors, exact: true },
   // { path: '/theme/colors', name: 'Colors', element: Colors },
   // { path: '/theme/typography', name: 'Typography', element: Typography },

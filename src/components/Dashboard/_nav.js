@@ -8,6 +8,7 @@ import { RiProductHuntLine } from "react-icons/ri";
 import { TbReport, TbStack2, TbDiscount } from "react-icons/tb";
 import { BiCategory } from "react-icons/bi";
 import { AiOutlineUser } from "react-icons/ai";
+import { IoReceiptOutline } from "react-icons/io5";
 
 const _nav = [
   // {
@@ -162,6 +163,12 @@ const _nav = [
     name: 'Stock',
     to: '/Stock',
     icon: <TbStack2 size={25} style={{marginRight: '20px'}}/>,
+},
+{
+  component: CNavItem,
+  name: 'POS',
+  to: '/pos',
+  icon: <IoReceiptOutline size={25} style={{marginRight: '20px'}}/>,
 },
 ]
 

@@ -108,19 +108,42 @@ function Stock() {
   };
   return (
     <>
-      <CustomHeader title={"Stock"} />
+      {/* <CustomHeader title={"Stock"} /> */}
       <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            <CCardHeader>
-              <CustomSearchFilter
-                placeholder={"Search Stock"}
-                onChange={filterBySearch}
+        <CCol xs style={{ paddingBottom:50}}>
+          <CCard className="mb-4 shadow" style={{ borderRadius: 20 }}>
+          <div
+              style={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                alignSelf: "center",
+              }}
+            >
+              <CustomHeader
+                justifyContent={"space-between"}
+                title={"Stock"}
               />
-            </CCardHeader>
 
-            <CCardBody>
-              <CTable align="middle" className="mb-0 border" hover responsive>
+              <CustomSearchFilter
+              style={{
+                marginBottom: window.innerWidth <= 775 ? 20 : "",
+              }}
+                placeholder={"Search Stock"}
+                filterBySearch={filterBySearch}
+              />
+            </div>
+
+            <CCard className="border border-0 " style={{ borderRadius: 20 }}>
+              <CTable
+                align="middle"
+                className="mb-0"
+                borderless
+                hover
+                responsive
+              >
                  <CustomTableHeader
                   image={"#"}
                   userName={"Name"}
@@ -154,7 +177,7 @@ function Stock() {
                   ))}
                 </CTableBody>
               </CTable>
-            </CCardBody>
+            </CCard>
           </CCard>
         </CCol>
       </CRow>

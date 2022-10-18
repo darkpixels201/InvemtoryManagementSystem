@@ -14,7 +14,7 @@ import {
   CTableHeaderCell,
   CTableRow,
 } from "@coreui/react";
-import '../../assets/css/style.css'
+import "../../assets/css/style.css";
 
 import avatar1 from "../../assets/images/avatars/1.jpg";
 import avatar2 from "../../assets/images/avatars/2.jpg";
@@ -28,106 +28,65 @@ import { TiEdit } from "react-icons/ti";
 import CustomSearchFilter from "../../components/customComponents/CustomSearchFilter";
 import CustomHeader from "../../components/customComponents/CustomHeader";
 import CustomTableHeader from "../../components/customComponents/CustomTableHeader";
+import { TableExample } from "../../assets/ProductArray/TableExample";
 
 function CategoriesList() {
+  // Sample how to write Icons in Array
+  // payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
+  // activity: {Icon: <TiEdit />},
 
-    // Sample how to write Icons in Array
-    // payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
-    // activity: {Icon: <TiEdit />},
 
-  const tableExample = [
-    {
-      avatar: { src: avatar1, status: "success" },
-      user: {
-        name: "Yiorgos Avraamu",
-        status: "Active",
-        new: true,
-        registered: "Jan 1, 2021",
-      },
-      
-      payment: { name: "Mastercard", Icon:<BsTrash color="red"/> },
-      activity: {Icon: <TiEdit />},
-    },
-    {
-      avatar: { src: avatar2, status: "danger" },
-      user: {
-        name: "Avram Tarasios Avram Tarasios",
-        status: "Active",
-        new: false,
-        registered: "Jan 1, 2021",
-      },
-      
-      payment: { name: "Visa", Icon:<BsTrash color="red"/> },
-      activity: "5 minutes ago",
-    },
-    {
-      avatar: { src: avatar3, status: "warning" },
-      user: { name: "Quintin Ed",  status: "InActive", new: true, registered: "Jan 1, 2021" },
-      // email: { name: "India", flag: cifIn },
-      
-      payment: { name: "Stripe", Icon:<BsTrash color="red"/> },
-      activity: "1 hour ago",
-    },
-    {
-      avatar: { src: avatar4, status: "secondary" },
-      user: { name: "Enéas Kwadwo",   status: "Active", new: true, registered: "Jan 1, 2021" },
-      // email: { name: "France", flag: cifFr },
-      
-      payment: { name: "PayPal", Icon:<BsTrash color="red"/> },
-      activity: "Last month",
-    },
-    {
-      avatar: { src: avatar5, status: "success" },
-      user: {
-        name: "Agapetus Tadeáš",        
-        status: "InActive",
-        new: true,
-        registered: "Jan 1, 2021",
-      },      
-      payment: { name: "Google Wallet", Icon:<BsTrash color="red"/>},
-      activity: "Last week",
-    },
-    {
-      avatar: { src: avatar6, status: "danger" },
-      user: {
-        name: "Friderik Dávid",       
-         status: "Active",
-        new: true,
-        registered: "Jan 1, 2021",
-      },      
-      payment: { name: "Amex", Icon:<BsTrash color="red" /> },
-      activity: "Last week",
-    },
-  ];
 
-  const [filteredList, setFilteredList] = new useState(tableExample);
 
   const filterBySearch = (event) => {
     const query = event.target.value;
-    var updatedList = [...tableExample];
+    var updatedList = [...TableExample];
     updatedList = updatedList.filter((item) => {
       return item.user.name.toLowerCase().indexOf(query.toLowerCase()) !== -1;
     });
     setFilteredList(updatedList);
   };
+  
+  const [filteredList, setFilteredList] = new useState(TableExample);
 
   return (
     <>
-    <CustomHeader title={"Categories List"} />
       <CRow>
-        <CCol xs>
-          <CCard className="mb-4">
-            {/* <CCardHeader>Categories List</CCardHeader> */}
-            <CCardHeader>
+        <CCol xs style={{ paddingBottom:50}}>
+          <CCard className="mb-4 shadow" style={{ borderRadius: 20 }}>
+            <div
+              style={{
+                display: "flex",
+                width: "100%",
+                flexDirection: "row",
+                justifyContent: "space-between",
+                alignItems: "center",
+                alignSelf: "center",
+              }}
+            >
+              <CustomHeader
+                justifyContent={"space-between"}
+                title={"Category"}
+              />
+
               <CustomSearchFilter
-                placeholder={"Search Categories"}
+              style={{
+                marginBottom: window.innerWidth <= 775 ? 20 : "",
+              }}
+                placeholder={"Search Category"}
                 onChange={filterBySearch}
               />
-            </CCardHeader>
+            </div>
 
-            <CCardBody>
-              <CTable align="middle" className="mb-0 border" hover responsive>
-                 <CustomTableHeader
+            <CCard className="border border-0 " style={{ borderRadius: 20 }}>
+              <CTable
+                align="middle"
+                className="mb-0"
+                borderless
+                hover
+                responsive
+              >
+                <CustomTableHeader
                   image={"#"}
                   userName={"Category"}
                   status={"Status"}
@@ -151,29 +110,33 @@ function CategoriesList() {
                           Registered: {item.user.registered}
                         </div>
                       </CTableDataCell>
-                      
+
                       <CTableDataCell className="text-center">
-                       
-                        <div style={{color:item.user.status === "InActive" ? 'red': 'green'}}>{item.user.status}</div>
+                        <div
+                          style={{
+                            color:
+                              item.user.status === "InActive" ? "red" : "green",
+                          }}
+                        >
+                          {item.user.status}
+                        </div>
                       </CTableDataCell>
-                      <CTableDataCell className="text-center" >
-                      <BsTrash className="cursor-pointer"  color="red"/>
+                      <CTableDataCell className="text-center">
+                        <BsTrash className="cursor-pointer" color="red" />
                       </CTableDataCell>
                       <CTableDataCell>
-                        
-                        <TiEdit className="cursor-pointer" size={'20'} />
+                        <TiEdit className="cursor-pointer" size={"20"} />
                       </CTableDataCell>
                     </CTableRow>
                   ))}
                 </CTableBody>
               </CTable>
-            </CCardBody>
+            </CCard>
           </CCard>
         </CCol>
       </CRow>
     </>
   );
-
 }
 
 export default CategoriesList;

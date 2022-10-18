@@ -29,8 +29,22 @@ function ViewModal({ setEyeVisible, item }) {
           style={{ width: "100%", padding: 10, marginTop: 15 }}
         >
           <CForm className="row g-3" style={{ width: "100%", padding: 10 }}>
-            <CCol md={6}>
-              <CFormInput disabled type="text" id="productName" label="Name" />
+            <CCol md={2}>
+              <img
+                className="rounded"
+                style={{ height: 100, width: 100 }}
+                size="xl"
+                src={item.avatar.src}
+              />
+            </CCol>
+            <CCol md={4}>
+              <CFormInput
+                disabled
+                type="text"
+                id="productName"
+                label="Name"
+                placeholder={item.user.name}
+              />
             </CCol>
             <CCol md={6}>
               <CFormInput
@@ -38,6 +52,7 @@ function ViewModal({ setEyeVisible, item }) {
                 type="text"
                 id="PurchasePrice"
                 label="Purchase Price"
+                placeholder={item.user.purchasePrice}
               />
             </CCol>
             <CCol md={6}>
@@ -46,34 +61,41 @@ function ViewModal({ setEyeVisible, item }) {
                 type="text"
                 id="SalePrice"
                 label="Sale Price"
+                placeholder={item.user.salePrice}
               />
             </CCol>
             <CCol md={6}>
-              <CFormInput disabled type="number" id="Stock" label="Stock" />
+              <CFormInput
+                disabled
+                type="number"
+                id="Stock"
+                label="Stock"
+                placeholder={item.user.stock}
+              />
             </CCol>
             <CCol xs={12}>
               <CFormInput
                 disabled
                 id="Description"
                 label="Description"
-                placeholder="Product Description"
+                placeholder={item.user.description}
               />
             </CCol>
-            <CCol xs={12}>
+            {/* <CCol xs={12}>
               <CFormInput
                 disabled
                 id="ChooseImage"
                 label="Choose Image"
                 type="file"
-                placeholder="Apartment, studio, or floor"
+                placeholder={item.user.name} 
               />
-            </CCol>
+            </CCol> */}
             <CCol md={4}>
               <CFormInput
                 disabled
                 id="ChooseColor"
                 label="Color"
-                placeholder="Enter Product Color"
+                placeholder={item.user.name}
               />
             </CCol>
             <CCol md={8}>
