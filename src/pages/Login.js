@@ -5,6 +5,7 @@ import { login } from '../actions/userAction'
 import { useNavigate } from 'react-router-dom';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
+import { TextField } from "@mui/material";
 
 
 function Login(location) {
@@ -37,6 +38,7 @@ function Login(location) {
     <>
 
     <h1>LOGIN</h1>
+
     {/* {error && <Message variant="danger">{error}</Message>}
       {loading && <Loader />}
     <section id="login_area" className="ptb-100">
@@ -81,6 +83,8 @@ function Login(location) {
             </div>
         </div>
     </section> */}
+<TextField label="Movie" />
+
 </>
   )
 }

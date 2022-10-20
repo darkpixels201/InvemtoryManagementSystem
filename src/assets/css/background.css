@@ -1,6 +1,7 @@
 .background-design {
     /* width: "100%"; */
     height: 100vh;
+    position: inherit;
     
   background-image: radial-gradient(
       circle at 13% 47%,

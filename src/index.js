@@ -9,6 +9,9 @@ import "./assets/css/style.css";
 import './assets/scss/styles.scss'
 import './assets/scssfordashboard/style.scss'
 
+import "../node_modules/@coreui/coreui/scss/coreui.scss";
+
+
 
 import { Provider } from 'react-redux';
 

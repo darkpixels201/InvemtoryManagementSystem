@@ -1,3 +1,4 @@
+import { TextField } from '@mui/material';
 import React, { Suspense } from 'react'
 import { HashRouter, Route, Routes } from "react-router-dom";
 import ManageProductArray from './pages/DashboardPages/ManageProducts/Molecules/ManageProductArray';
@@ -27,6 +28,7 @@ function App() {
       <Route path="*" name="DefaultLayout" element={<DefaultLayout />} />
       {/* <Route path="/product/:id" element={<ProductDetailScreen />} /> */}
       <Route path="*" name="furniture" element={<Furniture />} />
+
       </Routes>
         </Suspense>
     </HashRouter>

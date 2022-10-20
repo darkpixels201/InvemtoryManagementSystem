@@ -14,18 +14,17 @@ function CustomHeader(props, justifyContent) {
         padding: 15,
         display: "flex",
         // flexDirection:"row",
-        justifyContent: "space-around",
+        justifyContent: props.justifyContent || "space-around",
         flexWrap:"wrap",
-        alignItems:"center",
-        // alignSelf:"center",
+
       }}>
         {/* <Row
           
         > */}
-          <Col xs={"auto"} md={3} style={{ width:"auto", marginBottom: window.innerWidth <= 775 ? 10 : null,  }}>
+          <Col xs={"auto"} md={3} style={{ width:"auto", marginBottom: window.innerWidth <= 775 ? 10 : null,   }}>
             <CCardTitle
-              className="fs-2 mt-2 mb-0 "
-              style={{fontWeight:400 }}
+              className=" mt-2 mb-0 "
+              style={{fontWeight:400, fontSize: 50 }}
             >
               {props.title}
             </CCardTitle>
