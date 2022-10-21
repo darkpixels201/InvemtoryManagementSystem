@@ -22,6 +22,7 @@ function CustomText(props) {
           }}
         >
           {props.title}
+          {props.value}
         </div>
       </div>
     </div>

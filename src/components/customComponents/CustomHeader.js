@@ -24,7 +24,7 @@ function CustomHeader(props, justifyContent) {
           <Col xs={"auto"} md={3} style={{ width:"auto", marginBottom: window.innerWidth <= 775 ? 10 : null,   }}>
             <CCardTitle
               className=" mt-2 mb-0 "
-              style={{fontWeight:400, fontSize: 50 }}
+              style={{fontWeight:400, fontSize: 25 }}
             >
               {props.title}
             </CCardTitle>
