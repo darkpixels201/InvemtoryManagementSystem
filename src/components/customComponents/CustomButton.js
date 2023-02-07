@@ -24,6 +24,7 @@ function CustomButton(props) {
         marginBottom: props.marginBottom,
         marginHorizontal: props.marginHorizontal,
         paddingVertical: props.paddingVertical || 12,
+        cursor: "pointer",
       }}
       onClick={props.onClick}
     >

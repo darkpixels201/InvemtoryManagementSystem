@@ -1,8 +1,8 @@
 import React from "react";
 
-function CustomText(props) {
+function CustomText({...props}) {
   return (
-    <div onClick={props.onClick} disabled={!props.onClick}>
+    <div onClick={props.onClick} disabled={!props.onClick} >
       <div>
         <div
           style={{

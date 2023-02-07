@@ -15,7 +15,7 @@ function PointOfSale() {
         }}
       >
         <ProductTable  />
-        <BillTable style={{}} />
+        <BillTable />
       </div>
     </div>
   );

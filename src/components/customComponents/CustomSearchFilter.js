@@ -20,6 +20,7 @@ const CustomSearchFilter = (props) => {
             // width: 500,
             padding: 20,
             borderRadius: 50,
+            border:"none"
             
           }}
           type="text"
